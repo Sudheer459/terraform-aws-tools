@@ -29,11 +29,11 @@ module "jenkins_agent" {
   }
 }
 
-resource "aws_key_pair" "tools" {
-  key_name = "tools"
+resource "aws_key_pair" "openvpn" {
+  key_name = "openvpn"
   # you can paste public key directly like this
   #public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFCup8wRqGy6DJ6+uwL5+R4inLHnRbOBx7rgj7pDtvWU Acer@Rithvik"
-  public_key = file("~/.ssh/tools.pub")
+  public_key = file("~/.ssh/openvpn.pub")
   # ~ means windows home directory
 }
 
@@ -47,7 +47,7 @@ module "nexus" {
   # convert StringList to list and get first element
   subnet_id = "subnet-0d7dd9a137e180387"
   ami = data.aws_ami.nexus_ami_info.id
-  key_name = aws_key_pair.tools.key_name
+  key_name = aws_key_pair.openvpn.key_name
   root_block_device = [
     {
       volume_type = "gp3"
