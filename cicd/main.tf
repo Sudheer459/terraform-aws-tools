@@ -30,10 +30,10 @@ module "jenkins_agent" {
 }
 
 resource "aws_key_pair" "openvpn" {
-  key_name = "openvpn"
+  key_name = "tools"
   # you can paste public key directly like this
   #public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFCup8wRqGy6DJ6+uwL5+R4inLHnRbOBx7rgj7pDtvWU Acer@Rithvik"
-  public_key = file("~/.ssh/openvpn.pub")
+  public_key = file("~/.ssh/tools.pub")
   # ~ means windows home directory
 }
 
